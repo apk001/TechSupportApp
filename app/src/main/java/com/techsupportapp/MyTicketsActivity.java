@@ -58,7 +58,7 @@ public class MyTicketsActivity extends AppCompatActivity implements NavigationVi
             while (!isDownloaded);
             Globals.logInfoAPK(MyTicketsActivity.this, "Скачивание заявок - НАЧАТО");
             if (role != User.SIMPLE_USER) {
-                ticketsList = Globals.Downloads.Tickets.getOverseerTicketList(dataSnapshot, Globals.currentUser.getLogin());
+                ticketsList = Globals.Downloads.Tickets.getOverseerTicketList(dataSnapshot, Globals.currentUser.getLogin(), true);
                 sectionsPagerAdapter.updateFirstFragment(MyTicketsActivity.this, ticketsList, usersList);
 
                 ArrayList<Ticket> listOfSolvedTickets = Globals.Downloads.Tickets.getSpecificTickets(dataSnapshot, DatabaseVariables.ExceptFolder.Tickets.DATABASE_SOLVED_TICKET_TABLE);
@@ -216,10 +216,8 @@ public class MyTicketsActivity extends AppCompatActivity implements NavigationVi
             if (role != User.SIMPLE_USER) {
                 Intent intent = new Intent(MyTicketsActivity.this, ListOfTicketsActivity.class);
                 startActivity(intent);
-            }
-            else
-            {
-                Intent intent = new Intent(MyTicketsActivity.this, CreateTicketActivity.class);
+            } else {
+                Intent intent = new Intent(MyTicketsActivity.this, TicketTypePickerActivity.class);
                 startActivity(intent);
             }
         } else if (id == R.id.charts) {

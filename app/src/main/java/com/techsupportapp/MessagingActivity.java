@@ -188,10 +188,4 @@ public class MessagingActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        overridePendingTransition(R.anim.anim_slide_from_left, R.anim.anim_slide_to_right);
-    }
 }

@@ -1,5 +1,6 @@
 package com.techsupportapp.databaseClasses;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -9,7 +10,7 @@ import java.util.Locale;
  * Основной {@link #Ticket(String ticketId, String userId, String userName, String topic, String message) конструктор}.
  * @author Monarch
  */
-public class Ticket {
+public class Ticket implements Serializable {
 
     //region Constants
 
@@ -37,6 +38,11 @@ public class Ticket {
      * Решенная заявка.
      */
     public final static int SOLVED = 8;
+
+    public final static int TYPE_SOFTWARE = 10;
+    public final static int TYPE_HARDWARE = 11;
+    public final static int TYPE_EXTERNAL_DEVICES = 12;
+    public final static int TYPE_NETWORK = 13;
 
     //endregion
 
@@ -87,6 +93,11 @@ public class Ticket {
      */
     private String createDate;
 
+    /**
+     * Категория заявки.
+     */
+    private int type;
+
     //endregion
 
     /**
@@ -103,12 +114,13 @@ public class Ticket {
      * @param topic Тема заявки.
      * @param message Сообщение - описание проблемы в заявке.
      */
-    public Ticket(String ticketId, String userId, String userName, String topic, String message) {
+    public Ticket(String ticketId, int type, String userId, String userName, String topic, String message) {
         this.ticketId = ticketId;
         this.userId = userId;
         this.userName = userName;
         this.topic = topic;
         this.message = message;
+        this.type = type;
         this.specialistId = null;
         SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy", Locale.ENGLISH);
         this.createDate = formatter.format(Calendar.getInstance().getTime());
@@ -120,7 +132,7 @@ public class Ticket {
      * @param adminId Идентификатор консультанта, отвечающего за решение заявки.
      * @param adminName Имя консультанта, отвещающего за решение заявки.
      */
-    public void addAdmin(String adminId, String adminName) {
+    public void addSpecialist(String adminId, String adminName) {
         this.specialistId = adminId;
         this.specialistName = adminName;
         this.ticketState = Ticket.ACCEPTED;
@@ -196,6 +208,13 @@ public class Ticket {
      */
     public String getSpecialistName() {
         return specialistName;
+    }
+
+    /**
+     * @return Категория заявки
+     */
+    public int getType(){
+        return type;
     }
 
 }
