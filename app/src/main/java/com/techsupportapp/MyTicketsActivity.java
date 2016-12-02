@@ -140,7 +140,7 @@ public class MyTicketsActivity extends AppCompatActivity implements NavigationVi
         TextView userName = (TextView)navigationView.getHeaderView(0).findViewById(R.id.userName);
         TextView userType = (TextView)navigationView.getHeaderView(0).findViewById(R.id.userType);
 
-        currUserImage.setImageBitmap(Globals.ImageMethods.getClip(Globals.ImageMethods.createUserImage(Globals.currentUser.getUserName(), MyTicketsActivity.this)));
+        currUserImage.setImageDrawable(Globals.ImageMethods.getRoundImage(MyTicketsActivity.this, Globals.currentUser.getUserName()));
 
         sectionsPagerAdapter = new MyTicketsFragments.SectionsPagerAdapter(getSupportFragmentManager());
 
@@ -159,7 +159,7 @@ public class MyTicketsActivity extends AppCompatActivity implements NavigationVi
             userType.setText("Начальник отдела");
             nav_menu.findItem(R.id.listOfTickets).setVisible(false);
         } else if (role == User.DEPARTMENT_MEMBER){
-            userType.setText("Работник отдела");
+            userType.setText("Специалист");
             nav_menu.findItem(R.id.charts).setVisible(false);
             nav_menu.findItem(R.id.listOfTickets).setVisible(false);
         } else {
@@ -189,8 +189,8 @@ public class MyTicketsActivity extends AppCompatActivity implements NavigationVi
             new MaterialDialog.Builder(this)
                     .title("Закрыть приложение")
                     .content("Вы действительно хотите закрыть приложение?")
-                    .positiveText(android.R.string.yes)
-                    .negativeText(android.R.string.no)
+                    .positiveText("Да")
+                    .negativeText("Нет")
                     .onPositive(new MaterialDialog.SingleButtonCallback() {
                         @Override
                         public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
@@ -236,8 +236,8 @@ public class MyTicketsActivity extends AppCompatActivity implements NavigationVi
             new MaterialDialog.Builder(this)
                     .title("Закрыть приложение")
                     .content("Вы действительно хотите закрыть приложение?")
-                    .positiveText(android.R.string.yes)
-                    .negativeText(android.R.string.no)
+                    .positiveText("Да")
+                    .negativeText("Нет")
                     .onPositive(new MaterialDialog.SingleButtonCallback() {
                         @Override
                         public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {

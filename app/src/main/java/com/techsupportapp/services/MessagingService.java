@@ -2,7 +2,6 @@ package com.techsupportapp.services;
 
 import android.app.Notification;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -15,7 +14,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.techsupportapp.R;
-import com.techsupportapp.SignInActivity;
 import com.techsupportapp.databaseClasses.ChatMessage;
 import com.techsupportapp.databaseClasses.User;
 import com.techsupportapp.utility.Globals;
@@ -144,7 +142,7 @@ public class MessagingService extends Service {
         Notification.Builder builder = new Notification.Builder(getApplicationContext())
                 .setContentTitle("Новые сообщения")
                 .setContentText("Количество новых сообщений " + messagesCount)
-                .setSmallIcon(R.mipmap.icon);
+                .setSmallIcon(R.mipmap.ic_launcher);
         Notification notification = builder.build();
         notificationManager.notify(3, notification);
     }

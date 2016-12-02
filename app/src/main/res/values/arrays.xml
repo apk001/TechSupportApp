@@ -3,7 +3,7 @@
 
     <string-array name="roles_array">
         <item>Пользователь</item>
-        <item>Работник отдела</item>
+        <item>Специалист</item>
         <item>Администратор</item>
         <item>Начальник отдела</item>
     </string-array>
@@ -27,7 +27,6 @@
         <item>Компьютер не включается</item>
         <item>Компьютер самопроизвольно выключается</item>
         <item>Компьютер издает шумы</item>
-        <item>Компьютер работает слишком медленно</item>
         <item>Другие проблемы</item>
     </string-array>
 
